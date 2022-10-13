@@ -101,9 +101,10 @@ void Convert(std::string kaust_dir, std::string out_dir, ivec2 crop_low, ivec2 c
     DatasetParams out_params;
 
     Directory dir(scene_path);
-    auto info_files = dir.getFilesEnding(".ctprofile.xml");
-    CHECK_EQ(info_files.size(), 1);
-    auto dataset_name = info_files.front().substr(0, info_files.front().size() - 14);
+    //auto info_files = dir.getFilesEnding(".ctprofile.xml");
+    //CHECK_EQ(info_files.size(), 1);
+    //auto dataset_name = info_files.front().substr(0, info_files.front().size() - 14);
+    std::string dataset_name = "Pepper_CT_parameters";
     std::cout << "Dataset name: " << dataset_name << std::endl;
 
     auto image_names = dir.getFilesEnding(".tif");
@@ -312,8 +313,8 @@ void Convert(std::string kaust_dir, std::string out_dir, ivec2 crop_low, ivec2 c
 int main(int argc, const char* argv[])
 {
 
-    std::string input_base  = "/HD/New_scans/";
-    std::string output_base = "scenes/";
+    std::string input_base  = "/home/lzh/NeAT/dataset";
+    std::string output_base = "/home/lzh/NeAT/scenes";
     Convert(input_base + "/Pepper", output_base + "/pepper", ivec2(50, 20), ivec2(1880, 1400), 1);
     // Convert(input_base + "/Teapot_90kV", output_base + "/teapot", ivec2(-1, -1), ivec2(-1, 1350), 1, 17500);
     return 0;
